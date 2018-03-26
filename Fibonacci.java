@@ -17,24 +17,25 @@ public class Fibonacci {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner tampil = new Scanner(System.in);
-        System.out.println("Input");
-        int n = tampil.nextInt();
-        long num[] = new long[n];
-         
-        num[0] = 0;
-        num[1] = 1;
-         
-        for(int i = 2; i < n; i++) {
-            num[i] = num[i-1] + num[i-2];
-        }
-        System.out.println("Output");
-        for (int i = 0; i < n; i++) {
-            System.out.print(num[i] +  " ");
-        }
+       System.out.println("Enter number upto which Fibonacci series to print: ");
+        int number = new Scanner(System.in).nextInt();
+        System.out.println("\n Fibonacci number at location " + number + " is ==> " + (fibonacciLoop(number) + ""));
     }
-    
+
+    public static int fibonacciLoop(int number) {
+        if (number == 1 || number == 2) {
+            return 1;
+        }
+
+        int fibo1 = 1, fibo2 = 1, fibonacci = 1, sum=2;
+        for (int i = 3; i <= number; i++) {
+            fibonacci = fibo1 + fibo2; // Fibonacci number is sum of previous two Fibonacci number
+            fibo1 = fibo2;
+            fibo2 = fibonacci; 
+            sum = sum + fibonacci;
+        }
+        System.out.println("Sum : " + sum);
+        return fibonacci;
 }
 
 //Chochoball mantap
